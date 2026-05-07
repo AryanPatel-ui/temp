@@ -1,6 +1,0 @@
-{
-  "installCommand": "cd kairo && npm install",
-  "buildCommand": "cd kairo && npm run build",
-  "outputDirectory": "kairo/.next",
-  "devCommand": "cd kairo && npm run dev"
-}
