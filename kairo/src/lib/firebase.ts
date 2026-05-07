@@ -2,13 +2,13 @@ import { initializeApp, getApps } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDIGuNpUOqdwaM7Oz6AKcbICyVC90fwNNo",
-  authDomain: "placement-cell12.firebaseapp.com",
-  projectId: "placement-cell12",
-  storageBucket: "placement-cell12.firebasestorage.app",
-  messagingSenderId: "998740039411",
-  appId: "1:998740039411:web:72b267aeeec4ddd2a8c986",
-  measurementId: "G-NQ550M6MLS",
+  apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
+  authDomain: process.env.NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID,
+  appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
+  measurementId: process.env.NEXT_PUBLIC_FIREBASE_MEASUREMENT_ID,
 };
 
 // Avoid re-initializing on hot reloads in Next.js dev mode
