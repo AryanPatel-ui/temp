@@ -2,6 +2,9 @@
 
 import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { Toaster, toast } from 'sonner';
+import { Lock, ArrowRight } from 'lucide-react';
+import { useAuth } from '@/context/AuthContext';
+import AuthModal from '@/components/ui/AuthModal';
 import FilterSidebar from './FilterSidebar';
 import InternshipList from './InternshipList';
 import ErrorBanner from './ErrorBanner';
@@ -133,6 +136,8 @@ export const DEFAULT_FILTERS: FilterState = {
 const ITEMS_PER_PAGE = 12;
 
 export default function ListingsPageClient() {
+  const { user } = useAuth();
+  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
   const [filters, setFilters] = useState<FilterState>(DEFAULT_FILTERS);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -176,6 +181,16 @@ export default function ListingsPageClient() {
     toast.info('All filters cleared');
   }, []);
 
+  // Intercept pagination — page 2+ requires login
+  const handlePageChange = useCallback((page: number) => {
+    if (page > 1 && !user) {
+      setIsAuthModalOpen(true);
+      return;
+    }
+    setCurrentPage(page);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [user]);
+
   const availableLocations = useMemo(
     () => buildAvailableLocations(allInternships),
     [allInternships]
@@ -198,6 +213,7 @@ export default function ListingsPageClient() {
 
   return (
     <div className="relative">
+      <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
       <Toaster position="top-center" richColors />
 
       <div className="flex flex-col gap-12">
@@ -221,11 +237,25 @@ export default function ListingsPageClient() {
               />
 
               {!isLoading && totalPages > 1 && (
-                <Pagination
-                  currentPage={currentPage}
-                  totalPages={totalPages}
-                  onPageChange={setCurrentPage}
-                />
+                <>
+                  <Pagination
+                    currentPage={currentPage}
+                    totalPages={totalPages}
+                    onPageChange={handlePageChange}
+                  />
+                  {!user && totalPages > 1 && (
+                    <div className="mt-4 flex items-center justify-center gap-2 text-sm text-gray-500">
+                      <Lock size={13} className="text-gray-400" />
+                      <span>Pages 2+ require a free account —</span>
+                      <button
+                        onClick={() => setIsAuthModalOpen(true)}
+                        className="inline-flex items-center gap-1 text-[#0066FF] font-semibold hover:underline"
+                      >
+                        Sign in <ArrowRight size={12} />
+                      </button>
+                    </div>
+                  )}
+                </>
               )}
             </>
           )}
