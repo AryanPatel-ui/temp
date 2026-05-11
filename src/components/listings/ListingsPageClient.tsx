@@ -2,7 +2,6 @@
 
 import React, { useState, useCallback, useMemo, useEffect } from 'react';
 import { Toaster, toast } from 'sonner';
-import { Lock, ArrowRight } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import AuthModal from '@/components/ui/AuthModal';
 import FilterSidebar from './FilterSidebar';
@@ -237,25 +236,11 @@ export default function ListingsPageClient() {
               />
 
               {!isLoading && totalPages > 1 && (
-                <>
-                  <Pagination
-                    currentPage={currentPage}
-                    totalPages={totalPages}
-                    onPageChange={handlePageChange}
-                  />
-                  {!user && totalPages > 1 && (
-                    <div className="mt-4 flex items-center justify-center gap-2 text-sm text-gray-500">
-                      <Lock size={13} className="text-gray-400" />
-                      <span>Pages 2+ require a free account —</span>
-                      <button
-                        onClick={() => setIsAuthModalOpen(true)}
-                        className="inline-flex items-center gap-1 text-[#0066FF] font-semibold hover:underline"
-                      >
-                        Sign in <ArrowRight size={12} />
-                      </button>
-                    </div>
-                  )}
-                </>
+                <Pagination
+                  currentPage={currentPage}
+                  totalPages={totalPages}
+                  onPageChange={handlePageChange}
+                />
               )}
             </>
           )}
