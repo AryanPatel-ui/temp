@@ -47,36 +47,50 @@ export default function ResourcesPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {resources.map((resource, index) => (
-            <div 
+            <article 
               key={index}
-              className="group relative bg-white border border-gray-200 rounded-3xl p-8 hover:border-[#0066FF]/30 hover:shadow-[0_8px_30px_rgb(0,102,255,0.08)] transition-all duration-300 flex flex-col h-full cursor-pointer overflow-hidden"
+              className="bg-white rounded-[32px] border border-gray-100 shadow-[0_1px_2px_rgba(17,24,39,0.03)] p-5 sm:p-6 lg:p-8 hover:shadow-[0_0_0_1px_rgba(17,24,39,0.05),0_18px_38px_rgba(0,102,255,0.05)] transition-all duration-200 ease-in-out group flex flex-col h-full relative overflow-hidden"
             >
-              {/* Background gradient effect on hover */}
-              <div className="absolute inset-0 bg-gradient-to-b from-transparent to-[#0066FF]/[0.02] opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+              {/* Decorative Brand Accent */}
+              <div className="absolute top-0 right-0 w-32 h-32 bg-[#0066FF]/5 rounded-bl-full -mr-16 -mt-16 transition-transform duration-500 group-hover:scale-110" />
               
-              <div className="relative z-10">
-                <div className="flex items-start justify-between mb-6">
-                  <div className={`w-16 h-16 rounded-2xl ${resource.bg} flex items-center justify-center`}>
-                    {resource.icon}
+              <div className="relative z-10 flex-1 flex flex-col">
+                <div className="flex items-start justify-between mb-8">
+                  <div className="flex items-center gap-5">
+                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[18px] sm:rounded-[20px] bg-white flex items-center justify-center border-2 border-gray-50 shadow-sm group-hover:shadow-[0_8px_18px_rgba(0,102,255,0.08)] transition-all duration-300 overflow-hidden">
+                      <div className={`w-full h-full rounded-[16px] sm:rounded-[18px] ${resource.bg} flex items-center justify-center`}>
+                        {resource.icon}
+                      </div>
+                    </div>
+                    <div className="flex flex-col">
+                      <span className="text-[10px] font-black tracking-[0.2em] text-gray-400 uppercase">
+                        {resource.tag}
+                      </span>
+                      <h3 className="text-lg sm:text-xl font-black text-gray-900 mt-1 leading-tight group-hover:text-[#0066FF] transition-colors line-clamp-2">
+                        {resource.title}
+                      </h3>
+                    </div>
                   </div>
-                  <span className="text-[10px] font-bold tracking-wider uppercase text-gray-400 bg-gray-50 px-3 py-1.5 rounded-full">
-                    {resource.tag}
-                  </span>
                 </div>
 
-                <h3 className="text-xl font-black text-gray-900 mb-3 group-hover:text-[#0066FF] transition-colors">
-                  {resource.title}
-                </h3>
                 <p className="text-sm text-gray-500 leading-relaxed mb-8 flex-1">
                   {resource.description}
                 </p>
-
-                <div className="mt-auto inline-flex items-center gap-2 text-sm font-bold text-gray-900 group-hover:text-[#0066FF] transition-colors">
-                  Explore {resource.title}
-                  <ArrowRight size={16} className="transform group-hover:translate-x-1 transition-transform" />
-                </div>
               </div>
-            </div>
+
+              {/* Bottom Section: CTA */}
+              <div className="mt-auto pt-6 sm:pt-8 border-t border-gray-50 flex justify-end relative z-10">
+                <button
+                  className="flex items-center gap-3 px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5 bg-gray-900 text-white rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] hover:bg-[#0066FF] transition-all duration-300 shadow-xl shadow-gray-200 hover:shadow-[#0066FF]/30 group/btn"
+                >
+                  Explore
+                  <ArrowRight
+                    size={14}
+                    className="group-hover/btn:translate-x-1 transition-transform"
+                  />
+                </button>
+              </div>
+            </article>
           ))}
         </div>
       </main>
