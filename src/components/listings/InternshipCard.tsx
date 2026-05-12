@@ -226,11 +226,11 @@ export default function InternshipCard({ internship }: InternshipCardProps) {
 
       {/* Bottom Section: Time and CTA */}
       <div className="mt-auto pt-6 sm:pt-8 border-t border-gray-50 flex flex-col gap-4 relative z-10">
-        <div className="flex items-center gap-2 w-full justify-end">
+        <div className="flex items-center gap-3 sm:gap-4 w-full">
           {user && (
               <button 
                 onClick={(e) => { e.preventDefault(); setIsApplied(!isApplied); }}
-                className={`flex-1 sm:flex-none p-3 sm:px-4 sm:py-3.5 rounded-2xl border transition-all duration-300 flex items-center justify-center gap-2 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.1em] ${
+                className={`flex-1 p-3 sm:px-4 sm:py-3.5 rounded-2xl border transition-all duration-300 flex items-center justify-center gap-2 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.1em] ${
                   isApplied 
                     ? 'bg-green-50 border-green-200 text-green-600' 
                     : 'bg-white border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700'
@@ -246,7 +246,7 @@ export default function InternshipCard({ internship }: InternshipCardProps) {
             href={internship.applyUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 sm:flex-none flex items-center justify-center gap-2 sm:gap-3 p-3 sm:px-6 lg:px-8 sm:py-3.5 bg-gray-900 text-white rounded-2xl text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] hover:bg-newton-blue-500 transition-all duration-300 shadow-xl shadow-gray-200 hover:shadow-newton-blue-100 group/btn shrink-0"
+            className="flex-1 flex items-center justify-center gap-2 sm:gap-3 p-3 sm:px-6 lg:px-8 sm:py-3.5 bg-gray-900 text-white rounded-2xl text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] hover:bg-newton-blue-500 transition-all duration-300 shadow-xl shadow-gray-200 hover:shadow-newton-blue-100 group/btn"
           >
             Apply
             <ExternalLink
