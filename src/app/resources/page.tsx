@@ -9,21 +9,24 @@ export default function ResourcesPage() {
       description: 'Access comprehensive study materials, coding tutorials, and technical guides designed for core engineering concepts.',
       icon: <BookOpen className="w-8 h-8 text-[#0066FF]" />,
       bg: 'bg-blue-50',
-      tag: 'Learning Path'
+      tag: 'Learning Path',
+      href: 'https://pastoral-homburg-015.notion.site/Preparation-DOC-310cab9a2df3804ba3a4c0c15694cafa'
     },
     {
       title: 'Interview Prep',
       description: 'Practice with past interview questions, mock technical rounds, and behavioral interview strategies for top tech companies.',
       icon: <Users className="w-8 h-8 text-violet-600" />,
       bg: 'bg-violet-50',
-      tag: 'Practice'
+      tag: 'Practice',
+      href: '#'
     },
     {
       title: 'Resume Guidelines',
       description: 'Step-by-step guides, verified templates, and actionable tips to build an ATS-friendly resume that gets you shortlisted.',
       icon: <FileText className="w-8 h-8 text-amber-600" />,
       bg: 'bg-amber-50',
-      tag: 'Career'
+      tag: 'Career',
+      href: '#'
     }
   ];
 
@@ -80,7 +83,10 @@ export default function ResourcesPage() {
 
               {/* Bottom Section: CTA */}
               <div className="mt-auto pt-6 sm:pt-8 border-t border-gray-50 flex justify-end relative z-10">
-                <button
+                <a
+                  href={resource.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center gap-3 px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5 bg-gray-900 text-white rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] hover:bg-[#0066FF] transition-all duration-300 shadow-xl shadow-gray-200 hover:shadow-[#0066FF]/30 group/btn"
                 >
                   Explore
@@ -88,7 +94,7 @@ export default function ResourcesPage() {
                     size={14}
                     className="group-hover/btn:translate-x-1 transition-transform"
                   />
-                </button>
+                </a>
               </div>
             </article>
           ))}
