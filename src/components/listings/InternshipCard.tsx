@@ -225,7 +225,7 @@ export default function InternshipCard({ internship }: InternshipCardProps) {
       </div>
 
       {/* Bottom Section: Time and CTA */}
-      <div className="mt-auto pt-6 sm:pt-8 border-t border-gray-50 flex flex-wrap gap-4 items-center justify-between relative z-10">
+      <div className="mt-auto pt-6 sm:pt-8 border-t border-gray-50 flex flex-col min-[500px]:flex-row gap-4 items-start min-[500px]:items-center justify-between relative z-10">
         <div className="flex items-center gap-2 text-gray-400">
           <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
           <span className="text-[10px] font-black">POSTED</span>
@@ -234,11 +234,11 @@ export default function InternshipCard({ internship }: InternshipCardProps) {
           </span>
         </div>
         
-        <div className="flex items-center gap-2 ml-auto">
+        <div className="flex items-center gap-2 w-full min-[500px]:w-auto mt-1 min-[500px]:mt-0">
           {user && (
               <button 
                 onClick={(e) => { e.preventDefault(); setIsApplied(!isApplied); }}
-                className={`p-2.5 sm:px-4 sm:py-3.5 rounded-2xl border transition-all duration-300 flex items-center justify-center gap-2 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.1em] ${
+                className={`flex-1 min-[500px]:flex-none p-3 sm:px-4 sm:py-3.5 rounded-2xl border transition-all duration-300 flex items-center justify-center gap-2 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.1em] ${
                   isApplied 
                     ? 'bg-green-50 border-green-200 text-green-600' 
                     : 'bg-white border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700'
@@ -246,7 +246,7 @@ export default function InternshipCard({ internship }: InternshipCardProps) {
                 title={isApplied ? "Mark as Unapplied" : "Mark as Applied"}
               >
                 <CheckCircle2 size={14} className={isApplied ? 'fill-current' : ''} />
-                <span className="hidden min-[400px]:inline">{isApplied ? 'Applied' : 'Mark'}</span>
+                <span>{isApplied ? 'Applied' : 'Mark'}</span>
               </button>
           )}
 
@@ -254,7 +254,7 @@ export default function InternshipCard({ internship }: InternshipCardProps) {
             href={internship.applyUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 sm:gap-3 px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5 bg-gray-900 text-white rounded-2xl text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] hover:bg-newton-blue-500 transition-all duration-300 shadow-xl shadow-gray-200 hover:shadow-newton-blue-100 group/btn shrink-0"
+            className="flex-1 min-[500px]:flex-none flex items-center justify-center gap-2 sm:gap-3 p-3 sm:px-6 lg:px-8 sm:py-3.5 bg-gray-900 text-white rounded-2xl text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] hover:bg-newton-blue-500 transition-all duration-300 shadow-xl shadow-gray-200 hover:shadow-newton-blue-100 group/btn shrink-0"
           >
             Apply
             <ExternalLink
