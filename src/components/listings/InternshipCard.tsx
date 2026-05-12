@@ -105,8 +105,11 @@ export default function InternshipCard({ internship }: InternshipCardProps) {
       try {
         const savedIds = JSON.parse(localStorage.getItem('saved_internships') || '[]');
         setIsSaved(savedIds.includes(internship.id));
+        
+        const appliedIds = JSON.parse(localStorage.getItem('applied_internships') || '[]');
+        setIsApplied(appliedIds.includes(internship.id));
       } catch (e) {
-        console.error('Error reading saved internships', e);
+        console.error('Error reading internships local storage', e);
       }
     }
   }, [internship.id]);
@@ -130,6 +133,28 @@ export default function InternshipCard({ internship }: InternshipCardProps) {
       window.dispatchEvent(new Event('saved_internships_changed'));
     } catch (e) {
       console.error('Error saving internship', e);
+    }
+  };
+
+  const toggleApplied = (e: React.MouseEvent) => {
+    e.preventDefault();
+    if (!user) return;
+    
+    const newApplied = !isApplied;
+    setIsApplied(newApplied);
+    
+    try {
+      const appliedIds = JSON.parse(localStorage.getItem('applied_internships') || '[]');
+      if (newApplied) {
+        if (!appliedIds.includes(internship.id)) appliedIds.push(internship.id);
+      } else {
+        const idx = appliedIds.indexOf(internship.id);
+        if (idx > -1) appliedIds.splice(idx, 1);
+      }
+      localStorage.setItem('applied_internships', JSON.stringify(appliedIds));
+      window.dispatchEvent(new Event('applied_internships_changed'));
+    } catch (e) {
+      console.error('Error marking internship as applied', e);
     }
   };
 
@@ -262,7 +287,7 @@ export default function InternshipCard({ internship }: InternshipCardProps) {
         <div className="flex items-center gap-3 sm:gap-4 w-full">
           {user && (
               <button 
-                onClick={(e) => { e.preventDefault(); setIsApplied(!isApplied); }}
+                onClick={toggleApplied}
                 className={`flex-1 p-3 sm:px-4 sm:py-3.5 rounded-2xl border transition-all duration-300 flex items-center justify-center gap-2 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.1em] ${
                   isApplied 
                     ? 'bg-green-50 border-green-200 text-green-600' 

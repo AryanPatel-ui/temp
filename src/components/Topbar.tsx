@@ -112,7 +112,7 @@ export default function Topbar() {
                         Saved
                       </Link>
                       <Link 
-                        href="#"
+                        href="/profile/applied"
                         onClick={() => setIsUserMenuOpen(false)}
                         className="w-full flex items-center gap-2.5 px-4 py-3 text-[11px] font-semibold text-gray-600 hover:bg-gray-50 transition-colors"
                       >
@@ -219,7 +219,7 @@ export default function Topbar() {
                             Saved
                           </Link>
                           <Link 
-                            href="#"
+                            href="/profile/applied"
                             onClick={() => setIsMobileMenuOpen(false)}
                             className="flex items-center gap-2.5 py-2 text-[11px] font-semibold text-gray-600"
                           >
