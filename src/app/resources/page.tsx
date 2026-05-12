@@ -1,35 +1,12 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import Topbar from '@/components/Topbar';
 import { BookOpen, Users, FileText, ArrowRight } from 'lucide-react';
-import { useAuth } from '@/context/AuthContext';
-import { useRouter } from 'next/navigation';
-import ExploreModal from '@/components/ui/ExploreModal';
-import AuthModal from '@/components/ui/AuthModal';
 
 export default function ResourcesPage() {
-  const { user, loading } = useAuth();
-  const router = useRouter();
-  const [isExploreModalOpen, setIsExploreModalOpen] = useState(false);
-  const [isAuthModalOpen, setIsAuthModalOpen] = useState(false);
 
-  useEffect(() => {
-    if (!loading && !user) {
-      setIsExploreModalOpen(true);
-    } else if (user) {
-      setIsExploreModalOpen(false);
-      setIsAuthModalOpen(false);
-    }
-  }, [user, loading]);
 
-  const handleCloseExplore = () => {
-    setIsExploreModalOpen(false);
-  };
-
-  const handleCloseAuth = () => {
-    setIsAuthModalOpen(false);
-  };
 
   const resources = [
     {
@@ -58,25 +35,12 @@ export default function ResourcesPage() {
     }
   ];
 
-  if (loading) {
-    return <div className="min-h-screen bg-white" />;
-  }
 
   return (
     <div className="min-h-screen bg-white">
       <Topbar />
       
-      <ExploreModal 
-        isOpen={isExploreModalOpen} 
-        onClose={handleCloseExplore} 
-        onContinue={() => {
-          setIsExploreModalOpen(false);
-          setIsAuthModalOpen(true);
-        }} 
-      />
-      <AuthModal isOpen={isAuthModalOpen} onClose={handleCloseAuth} />
-      
-      <main className={`max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-20 transition-all duration-300 ${!user ? 'blur-md pointer-events-none select-none opacity-50' : ''}`}>
+      <main className="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-20 transition-all duration-300">
         <div className="max-w-2xl mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-[#0066FF] text-xs font-semibold mb-6">
             <span className="w-1.5 h-1.5 rounded-full bg-[#0066FF] animate-pulse" />
