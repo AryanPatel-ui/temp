@@ -4,7 +4,8 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { ArrowLeft, Bookmark } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
-import { MOCK_INTERNSHIPS, Internship } from '@/lib/internshipData';
+import { fetchInternships } from '@/lib/internshipListings';
+import type { Internship } from '@/lib/internshipData';
 import InternshipCard from '@/components/listings/InternshipCard';
 
 export default function SavedInternshipsPage() {
@@ -13,22 +14,34 @@ export default function SavedInternshipsPage() {
   const [isLoaded, setIsLoaded] = useState(false);
 
   useEffect(() => {
-    const loadSaved = () => {
+    let active = true;
+
+    const loadSaved = async () => {
       try {
         const savedIds = JSON.parse(localStorage.getItem('saved_internships') || '[]');
-        const filtered = MOCK_INTERNSHIPS.filter(internship => savedIds.includes(internship.id));
-        setSavedInternships(filtered);
+        
+        // Fetch real internships from API
+        const allInternships = await fetchInternships();
+        
+        if (active) {
+          const filtered = allInternships.filter(internship => savedIds.includes(internship.id));
+          setSavedInternships(filtered);
+          setIsLoaded(true);
+        }
       } catch (e) {
         console.error('Error loading saved internships', e);
+        if (active) setIsLoaded(true);
       }
-      setIsLoaded(true);
     };
 
     loadSaved();
 
-    window.addEventListener('saved_internships_changed', loadSaved);
+    const handleSavedChange = () => loadSaved();
+    window.addEventListener('saved_internships_changed', handleSavedChange);
+    
     return () => {
-      window.removeEventListener('saved_internships_changed', loadSaved);
+      active = false;
+      window.removeEventListener('saved_internships_changed', handleSavedChange);
     };
   }, []);
 
