@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useState } from 'react';
 import {
   MapPin,
   Clock,
@@ -14,8 +14,11 @@ import {
   Brain,
   PenTool,
   Briefcase,
+  Bookmark,
+  CheckCircle2,
 } from 'lucide-react';
 import type { Internship } from '@/lib/internshipData';
+import { useAuth } from '@/context/AuthContext';
 
 interface InternshipCardProps {
   internship: Internship;
@@ -93,6 +96,10 @@ function getRoleIcon(title: string) {
 }
 
 export default function InternshipCard({ internship }: InternshipCardProps) {
+  const { user } = useAuth();
+  const [isSaved, setIsSaved] = useState(false);
+  const [isApplied, setIsApplied] = useState(false);
+
   const RoleIcon = getRoleIcon(internship.title);
   const displaySkills = internship.skills.slice(0, 2);
 
@@ -204,7 +211,7 @@ export default function InternshipCard({ internship }: InternshipCardProps) {
       </div>
 
       {/* Bottom Section: Time and CTA */}
-      <div className="mt-auto pt-6 sm:pt-8 border-t border-gray-50 flex items-center justify-between relative z-10">
+      <div className="mt-auto pt-6 sm:pt-8 border-t border-gray-50 flex flex-wrap gap-4 items-center justify-between relative z-10">
         <div className="flex items-center gap-2 text-gray-400">
           <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
           <span className="text-[10px] font-black">POSTED</span>
@@ -212,18 +219,51 @@ export default function InternshipCard({ internship }: InternshipCardProps) {
             {getTimeAgo(internship.postedDate)}
           </span>
         </div>
-        <a
-          href={internship.applyUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="flex items-center gap-3 px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5 bg-gray-900 text-white rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] hover:bg-newton-blue-500 transition-all duration-300 shadow-xl shadow-gray-200 hover:shadow-newton-blue-100 group/btn"
-        >
-          Apply
-          <ExternalLink
-            size={14}
-            className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform"
-          />
-        </a>
+        
+        <div className="flex items-center gap-2 ml-auto">
+          {user && (
+            <>
+              <button 
+                onClick={(e) => { e.preventDefault(); setIsSaved(!isSaved); }}
+                className={`p-2.5 sm:px-4 sm:py-3.5 rounded-2xl border transition-all duration-300 flex items-center justify-center gap-2 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.1em] ${
+                  isSaved 
+                    ? 'bg-[#0066FF]/10 border-[#0066FF]/30 text-[#0066FF]' 
+                    : 'bg-white border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700'
+                }`}
+                title={isSaved ? "Unsave" : "Save"}
+              >
+                <Bookmark size={14} className={isSaved ? 'fill-current' : ''} />
+                <span className="hidden min-[400px]:inline">{isSaved ? 'Saved' : 'Save'}</span>
+              </button>
+              
+              <button 
+                onClick={(e) => { e.preventDefault(); setIsApplied(!isApplied); }}
+                className={`p-2.5 sm:px-4 sm:py-3.5 rounded-2xl border transition-all duration-300 flex items-center justify-center gap-2 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.1em] ${
+                  isApplied 
+                    ? 'bg-green-50 border-green-200 text-green-600' 
+                    : 'bg-white border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700'
+                }`}
+                title={isApplied ? "Mark as Unapplied" : "Mark as Applied"}
+              >
+                <CheckCircle2 size={14} className={isApplied ? 'fill-current' : ''} />
+                <span className="hidden min-[400px]:inline">{isApplied ? 'Applied' : 'Mark'}</span>
+              </button>
+            </>
+          )}
+
+          <a
+            href={internship.applyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 sm:gap-3 px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5 bg-gray-900 text-white rounded-2xl text-[10px] sm:text-[11px] font-black uppercase tracking-[0.2em] hover:bg-newton-blue-500 transition-all duration-300 shadow-xl shadow-gray-200 hover:shadow-newton-blue-100 group/btn shrink-0"
+          >
+            Apply
+            <ExternalLink
+              size={14}
+              className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform"
+            />
+          </a>
+        </div>
       </div>
     </article>
   );
