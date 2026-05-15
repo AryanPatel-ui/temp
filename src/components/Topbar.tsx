@@ -7,14 +7,14 @@ import { usePathname } from 'next/navigation';
 import { Menu, X, LogOut, ChevronDown, User, Bookmark, CheckCircle2 } from 'lucide-react';
 import { useAuth } from '@/context/AuthContext';
 import AuthModal from '@/components/ui/AuthModal';
-import { toast, Toaster } from 'sonner';
+import { Toaster } from 'sonner';
 
 const navLinks = [
   { label: 'SELF APPLY', href: '/' },
   { label: 'QUESTIONS', href: '/questions' },
-  { label: 'FLASHCARDS', href: '#' },
-  { label: 'ASSIGNMENTS', href: '#' },
-  { label: 'EXPERIENCES', href: '#' },
+  { label: 'FLASHCARDS', href: '/flashcards' },
+  { label: 'ASSIGNMENTS', href: '/assignments' },
+  { label: 'EXPERIENCES', href: '/experiences' },
   { label: 'RESOURCES', href: '/resources' },
 ];
 
@@ -59,12 +59,6 @@ export default function Topbar() {
                   <Link
                     key={link.label}
                     href={link.href}
-                    onClick={(e) => {
-                      if (['FLASHCARDS', 'EXPERIENCES', 'ASSIGNMENTS'].includes(link.label)) {
-                        e.preventDefault();
-                        toast.info('Coming soon!');
-                      }
-                    }}
                     className={`text-[11px] font-black tracking-[0.14em] transition-all duration-200 flex items-center justify-center px-3 min-[1226px]:px-4 py-2.5 rounded-full ${
                       isActive
                         ? 'bg-newton-blue-50 text-newton-blue-500'
@@ -171,15 +165,7 @@ export default function Topbar() {
                       <Link
                         key={link.label}
                         href={link.href}
-                        onClick={(e) => {
-                          if (['FLASHCARDS', 'EXPERIENCES', 'ASSIGNMENTS'].includes(link.label)) {
-                            e.preventDefault();
-                            toast.info('Coming soon!');
-                            setIsMobileMenuOpen(false);
-                            return;
-                          }
-                          setIsMobileMenuOpen(false);
-                        }}
+                        onClick={() => setIsMobileMenuOpen(false)}
                         className={`px-4 py-3 rounded-xl text-[11px] font-black tracking-[0.14em] transition-all duration-200 ${
                           isActive
                             ? 'bg-newton-blue-50 border border-newton-blue-500 text-newton-blue-500'

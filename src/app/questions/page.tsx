@@ -1,8 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import Topbar from '@/components/Topbar';
-import { FileCode, Globe, Braces, Binary, Terminal, ExternalLink } from 'lucide-react';
+import { FileCode, Globe, Braces, Binary, Terminal, ExternalLink, Lock } from 'lucide-react';
 
 const questionCategories = [
   {
@@ -72,59 +71,70 @@ export default function QuestionsPage() {
           {questionCategories.map((category) => {
             const Icon = category.icon;
             return (
-              <Link
+              <div
                 key={category.id}
-                href={`#`}
-                className="bg-white rounded-[32px] border border-gray-100 shadow-[0_1px_2px_rgba(17,24,39,0.03)] p-5 sm:p-6 lg:p-8 hover:shadow-[0_0_0_1px_rgba(17,24,39,0.05),0_18px_38px_rgba(0,102,255,0.05)] transition-all duration-200 ease-in-out group flex flex-col h-full relative overflow-hidden"
+                className="bg-white rounded-[32px] border border-gray-100 shadow-[0_1px_2px_rgba(17,24,39,0.03)] p-5 sm:p-6 lg:p-8 flex flex-col h-full relative overflow-hidden group"
               >
-                {/* Decorative Brand Accent */}
-                <div className="absolute top-0 right-0 w-32 h-32 bg-newton-blue-500/5 rounded-bl-full -mr-16 -mt-16 transition-transform duration-500 group-hover:scale-110" />
+                {/* Blurred Wrapper */}
+                <div className="flex flex-col h-full filter blur-[6px] opacity-50 select-none pointer-events-none transition-all duration-300">
+                  {/* Decorative Brand Accent */}
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-newton-blue-500/5 rounded-bl-full -mr-16 -mt-16" />
 
-                {/* Top Section */}
-                <div className="flex items-start justify-between mb-8 relative z-10">
-                  <div className="flex items-center gap-5">
-                    <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[18px] sm:rounded-[20px] bg-white flex items-center justify-center border-2 border-gray-50 shadow-sm group-hover:shadow-[0_8px_18px_rgba(0,102,255,0.08)] transition-all duration-300 overflow-hidden">
-                      <div className={`w-full h-full rounded-[16px] sm:rounded-[18px] ${category.bgColor} flex items-center justify-center`}>
-                        <Icon size={26} strokeWidth={2} className={`sm:w-7 sm:h-7 ${category.color}`} />
+                  {/* Top Section */}
+                  <div className="flex items-start justify-between mb-8 relative z-10">
+                    <div className="flex items-center gap-5">
+                      <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[18px] sm:rounded-[20px] bg-white flex items-center justify-center border-2 border-gray-50 shadow-sm overflow-hidden">
+                        <div className={`w-full h-full rounded-[16px] sm:rounded-[18px] ${category.bgColor} flex items-center justify-center`}>
+                          <Icon size={26} strokeWidth={2} className={`sm:w-7 sm:h-7 ${category.color}`} />
+                        </div>
+                      </div>
+                      <div className="flex flex-col">
+                        <div className="flex items-center gap-2">
+                          <span className="text-[10px] font-black tracking-[0.2em] text-gray-400 uppercase">
+                            {category.count}
+                          </span>
+                        </div>
+                        <h3 className="text-lg sm:text-xl font-black text-gray-900 mt-1 leading-tight line-clamp-2">
+                          {category.title}
+                        </h3>
                       </div>
                     </div>
-                    <div className="flex flex-col">
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-black tracking-[0.2em] text-gray-400 uppercase">
-                          {category.count}
-                        </span>
-                      </div>
-                      <h3 className="text-lg sm:text-xl font-black text-gray-900 mt-1 leading-tight group-hover:text-newton-blue-500 transition-colors line-clamp-2">
-                        {category.title}
-                      </h3>
+                  </div>
+
+                  {/* Description */}
+                  <div className="mb-8 relative z-10 flex-grow">
+                    <p className="text-sm text-gray-500 font-medium leading-relaxed">
+                      {category.description}
+                    </p>
+                  </div>
+                  
+                  {/* Bottom Section */}
+                  <div className="mt-auto pt-6 sm:pt-8 border-t border-gray-50 flex items-center justify-between relative z-10">
+                    <div className="flex items-center gap-2 text-gray-400">
+                      <div className="w-2 h-2 rounded-full bg-newton-blue-500" />
+                      <span className="text-[10px] font-black uppercase tracking-widest">
+                        PRACTICE NOW
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5 bg-gray-900 text-white rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] transition-all duration-300 shadow-xl shadow-gray-200">
+                      Start
+                      <ExternalLink size={14} />
                     </div>
                   </div>
                 </div>
 
-                {/* Description */}
-                <div className="mb-8 relative z-10 flex-grow">
-                  <p className="text-sm text-gray-500 font-medium leading-relaxed">
-                    {category.description}
-                  </p>
-                </div>
-                
-                {/* Bottom Section */}
-                <div className="mt-auto pt-6 sm:pt-8 border-t border-gray-50 flex items-center justify-between relative z-10">
-                  <div className="flex items-center gap-2 text-gray-400">
-                    <div className="w-2 h-2 rounded-full bg-newton-blue-500" />
-                    <span className="text-[10px] font-black uppercase tracking-widest">
-                      PRACTICE NOW
+                {/* Lock / Coming Soon Overlay */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center bg-white/20 backdrop-blur-[1px] z-20">
+                  <div className="flex flex-col items-center gap-3">
+                    <div className="w-12 h-12 rounded-2xl bg-gray-900 flex items-center justify-center shadow-xl shadow-gray-900/20 border border-gray-800 transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300">
+                      <Lock size={18} className="text-white" />
+                    </div>
+                    <span className="px-4 py-2 rounded-xl bg-white border border-gray-200 text-[#1A1D23] text-[11px] font-black uppercase tracking-[0.2em] shadow-lg shadow-gray-100/50 select-none backdrop-blur-md transform translate-y-1 group-hover:translate-y-0 transition-transform duration-300 delay-75">
+                      Coming Soon
                     </span>
                   </div>
-                  <div className="flex items-center gap-3 px-4 sm:px-6 lg:px-8 py-3 sm:py-3.5 bg-gray-900 text-white rounded-2xl text-[11px] font-black uppercase tracking-[0.2em] hover:bg-newton-blue-500 transition-all duration-300 shadow-xl shadow-gray-200 hover:shadow-newton-blue-100 group/btn">
-                    Start
-                    <ExternalLink
-                      size={14}
-                      className="group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform"
-                    />
-                  </div>
                 </div>
-              </Link>
+              </div>
             );
           })}
         </div>
