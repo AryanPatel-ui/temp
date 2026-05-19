@@ -18,9 +18,7 @@ export default function ErrorBanner({
         <AlertTriangle size={17} className="text-red-600" />
       </div>
       <div className="flex-1 min-w-0">
-        <p className="text-sm font-semibold text-red-800 mb-1">
-          Unable to load internships
-        </p>
+        <p className="text-sm font-semibold text-red-800 mb-1">Unable to load internships</p>
         <p className="text-sm text-red-700">{message}</p>
       </div>
       {onRetry && (

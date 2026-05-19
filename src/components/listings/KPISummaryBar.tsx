@@ -3,7 +3,6 @@ import { Briefcase, Sparkles, Building2, Wifi } from 'lucide-react';
 import type { Internship } from '@/lib/internshipData';
 import Icon from '@/components/ui/AppIcon';
 
-
 interface KPISummaryBarProps {
   internships: Internship[];
   filteredCount: number;
@@ -13,12 +12,10 @@ export default function KPISummaryBar({ internships, filteredCount }: KPISummary
   const totalListings = internships.length;
   const newThisWeek = internships.filter((i) => i.isNew).length;
   const companiesHiring = new Set(internships.map((i) => i.company)).size;
-  const wfhCount = internships.filter(
-    (i) => {
-      const loc = i.location.toLowerCase();
-      return loc === 'remote' || loc === 'work from home';
-    }
-  ).length;
+  const wfhCount = internships.filter((i) => {
+    const loc = i.location.toLowerCase();
+    return loc === 'remote' || loc === 'work from home';
+  }).length;
 
   const cards = [
     {
@@ -72,7 +69,9 @@ export default function KPISummaryBar({ internships, filteredCount }: KPISummary
             key={card.id}
             className={`bg-white rounded-xl border ${card.border} p-4 xl:p-5 flex items-start gap-3 hover:shadow-sm transition-shadow duration-200`}
           >
-            <div className={`w-9 h-9 rounded-lg ${card.bg} flex items-center justify-center flex-shrink-0`}>
+            <div
+              className={`w-9 h-9 rounded-lg ${card.bg} flex items-center justify-center flex-shrink-0`}
+            >
               <Icon size={17} className={card.color} />
             </div>
             <div className="min-w-0">

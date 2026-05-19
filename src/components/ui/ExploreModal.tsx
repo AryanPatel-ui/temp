@@ -11,10 +11,7 @@ export default function ExploreModal({ isOpen, onClose, onContinue }: ExploreMod
   if (!isOpen) return null;
 
   return (
-    <div
-      className="fixed inset-0 z-[100] flex items-center justify-center p-4"
-      onClick={onClose}
-    >
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" onClick={onClose}>
       {/* Backdrop */}
       <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" />
 
@@ -38,9 +35,10 @@ export default function ExploreModal({ isOpen, onClose, onContinue }: ExploreMod
         <h2 className="text-2xl font-black text-gray-900 tracking-tight mb-3">
           Sign in to explore more
         </h2>
-        
+
         <p className="text-sm text-gray-500 mb-8 leading-relaxed">
-          Create a free account to browse verified listings, use advanced filters, and apply to opportunities with one click.
+          Create a free account to browse verified listings, use advanced filters, and apply to
+          opportunities with one click.
         </p>
 
         <button

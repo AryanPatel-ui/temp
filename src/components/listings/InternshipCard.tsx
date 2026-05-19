@@ -105,7 +105,7 @@ export default function InternshipCard({ internship }: InternshipCardProps) {
       try {
         const savedIds = JSON.parse(localStorage.getItem('saved_internships') || '[]');
         setIsSaved(savedIds.includes(internship.id));
-        
+
         const appliedIds = JSON.parse(localStorage.getItem('applied_internships') || '[]');
         setIsApplied(appliedIds.includes(internship.id));
       } catch (e) {
@@ -117,10 +117,10 @@ export default function InternshipCard({ internship }: InternshipCardProps) {
   const toggleSave = (e: React.MouseEvent) => {
     e.preventDefault();
     if (!user) return;
-    
+
     const newSaved = !isSaved;
     setIsSaved(newSaved);
-    
+
     try {
       const savedIds = JSON.parse(localStorage.getItem('saved_internships') || '[]');
       if (newSaved) {
@@ -139,10 +139,10 @@ export default function InternshipCard({ internship }: InternshipCardProps) {
   const toggleApplied = (e: React.MouseEvent) => {
     e.preventDefault();
     if (!user) return;
-    
+
     const newApplied = !isApplied;
     setIsApplied(newApplied);
-    
+
     try {
       const appliedIds = JSON.parse(localStorage.getItem('applied_internships') || '[]');
       if (newApplied) {
@@ -190,16 +190,16 @@ export default function InternshipCard({ internship }: InternshipCardProps) {
             </h3>
           </div>
         </div>
-        
+
         {user && (
-          <button 
+          <button
             onClick={toggleSave}
             className={`p-2.5 sm:p-3 rounded-2xl border transition-all duration-300 flex items-center justify-center shrink-0 ${
-              isSaved 
-                ? 'bg-[#0066FF]/10 border-[#0066FF]/30 text-[#0066FF]' 
+              isSaved
+                ? 'bg-[#0066FF]/10 border-[#0066FF]/30 text-[#0066FF]'
                 : 'bg-white border-gray-100 text-gray-400 hover:border-gray-200 hover:text-gray-600'
             }`}
-            title={isSaved ? "Unsave" : "Save"}
+            title={isSaved ? 'Unsave' : 'Save'}
           >
             <Bookmark size={18} className={isSaved ? 'fill-current' : ''} />
           </button>
@@ -286,18 +286,18 @@ export default function InternshipCard({ internship }: InternshipCardProps) {
       <div className="mt-auto pt-6 sm:pt-8 border-t border-gray-50 flex flex-col gap-4 relative z-10">
         <div className="flex items-center gap-3 sm:gap-4 w-full">
           {user && (
-              <button 
-                onClick={toggleApplied}
-                className={`flex-1 p-3 sm:px-4 sm:py-3.5 rounded-2xl border transition-all duration-300 flex items-center justify-center gap-2 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.1em] ${
-                  isApplied 
-                    ? 'bg-green-50 border-green-200 text-green-600' 
-                    : 'bg-white border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700'
-                }`}
-                title={isApplied ? "Mark as Unapplied" : "Mark as Applied"}
-              >
-                <CheckCircle2 size={14} className={isApplied ? 'fill-current' : ''} />
-                <span>{isApplied ? 'Applied' : 'Mark'}</span>
-              </button>
+            <button
+              onClick={toggleApplied}
+              className={`flex-1 p-3 sm:px-4 sm:py-3.5 rounded-2xl border transition-all duration-300 flex items-center justify-center gap-2 text-[10px] sm:text-[11px] font-black uppercase tracking-[0.1em] ${
+                isApplied
+                  ? 'bg-green-50 border-green-200 text-green-600'
+                  : 'bg-white border-gray-200 text-gray-500 hover:border-gray-300 hover:text-gray-700'
+              }`}
+              title={isApplied ? 'Mark as Unapplied' : 'Mark as Applied'}
+            >
+              <CheckCircle2 size={14} className={isApplied ? 'fill-current' : ''} />
+              <span>{isApplied ? 'Applied' : 'Mark'}</span>
+            </button>
           )}
 
           <a

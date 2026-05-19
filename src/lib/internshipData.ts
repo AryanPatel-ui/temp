@@ -61,7 +61,7 @@ export function parseApiPostedDate(value: unknown): Date | null {
     return Number.isNaN(out.getTime()) ? null : out;
   }
 
-  m = s.match(/^(\d{1,2})[\/-](\d{1,2})[\/-](\d{2,4})$/);
+  m = s.match(/^(\d{1,2})[/-](\d{1,2})[/-](\d{2,4})$/);
   if (m) {
     const day = Number(m[1]);
     const month = Number(m[2]) - 1;

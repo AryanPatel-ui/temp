@@ -237,12 +237,42 @@ export default function ListingsPageClient() {
         <div className="relative mt-4 overflow-hidden">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 select-none pointer-events-none opacity-40 blur-[3px]">
             {[
-              { role: 'Full Stack Developer', company: 'Razorpay', stipend: '₹25K/mo', tag: 'bg-blue-50 text-blue-700' },
-              { role: 'UI/UX Designer', company: 'Swiggy', stipend: '₹18K/mo', tag: 'bg-violet-50 text-violet-700' },
-              { role: 'Data Analyst', company: 'CRED', stipend: '₹20K/mo', tag: 'bg-amber-50 text-amber-700' },
-              { role: 'Product Management', company: 'Meesho', stipend: '₹30K/mo', tag: 'bg-green-50 text-green-700' },
-              { role: 'Backend Engineer', company: 'Zepto', stipend: '₹22K/mo', tag: 'bg-red-50 text-red-700' },
-              { role: 'ML Intern', company: 'Google', stipend: '₹50K/mo', tag: 'bg-teal-50 text-teal-700' },
+              {
+                role: 'Full Stack Developer',
+                company: 'Razorpay',
+                stipend: '₹25K/mo',
+                tag: 'bg-blue-50 text-blue-700',
+              },
+              {
+                role: 'UI/UX Designer',
+                company: 'Swiggy',
+                stipend: '₹18K/mo',
+                tag: 'bg-violet-50 text-violet-700',
+              },
+              {
+                role: 'Data Analyst',
+                company: 'CRED',
+                stipend: '₹20K/mo',
+                tag: 'bg-amber-50 text-amber-700',
+              },
+              {
+                role: 'Product Management',
+                company: 'Meesho',
+                stipend: '₹30K/mo',
+                tag: 'bg-green-50 text-green-700',
+              },
+              {
+                role: 'Backend Engineer',
+                company: 'Zepto',
+                stipend: '₹22K/mo',
+                tag: 'bg-red-50 text-red-700',
+              },
+              {
+                role: 'ML Intern',
+                company: 'Google',
+                stipend: '₹50K/mo',
+                tag: 'bg-teal-50 text-teal-700',
+              },
             ].map((card, i) => (
               <div key={i} className="bg-white rounded-2xl border border-gray-100 p-5 shadow-sm">
                 <div className="flex items-start gap-3">
@@ -252,7 +282,9 @@ export default function ListingsPageClient() {
                   <div className="flex-1 min-w-0">
                     <p className="text-sm font-bold text-gray-900 truncate">{card.role}</p>
                     <p className="text-xs text-gray-500 mt-0.5">{card.company}</p>
-                    <span className={`mt-2 inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full ${card.tag}`}>
+                    <span
+                      className={`mt-2 inline-block text-[10px] font-semibold px-2 py-0.5 rounded-full ${card.tag}`}
+                    >
                       {card.stipend}
                     </span>
                   </div>
@@ -273,7 +305,8 @@ export default function ListingsPageClient() {
               Sign in to view internship opportunities
             </h2>
             <p className="mt-3 text-sm text-gray-500 max-w-xs leading-relaxed">
-              Create a free account to browse verified listings, filter by skills & location, and apply in one click.
+              Create a free account to browse verified listings, filter by skills & location, and
+              apply in one click.
             </p>
             <button
               onClick={() => setIsAuthModalOpen(true)}

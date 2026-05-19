@@ -183,14 +183,17 @@ export default function ListingsPageClient() {
   }, []);
 
   // Intercept pagination — page 2+ requires login
-  const handlePageChange = useCallback((page: number) => {
-    if (page > 1 && !user) {
-      setIsExploreModalOpen(true);
-      return;
-    }
-    setCurrentPage(page);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-  }, [user]);
+  const handlePageChange = useCallback(
+    (page: number) => {
+      if (page > 1 && !user) {
+        setIsExploreModalOpen(true);
+        return;
+      }
+      setCurrentPage(page);
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    },
+    [user]
+  );
 
   const availableLocations = useMemo(
     () => buildAvailableLocations(allInternships),
@@ -211,14 +214,13 @@ export default function ListingsPageClient() {
     return filteredAndSorted.slice(start, start + ITEMS_PER_PAGE);
   }, [filteredAndSorted, currentPage]);
 
-
   return (
     <div className="relative">
       <AuthModal isOpen={isAuthModalOpen} onClose={() => setIsAuthModalOpen(false)} />
-      <ExploreModal 
-        isOpen={isExploreModalOpen} 
-        onClose={() => setIsExploreModalOpen(false)} 
-        onContinue={() => setIsAuthModalOpen(true)} 
+      <ExploreModal
+        isOpen={isExploreModalOpen}
+        onClose={() => setIsExploreModalOpen(false)}
+        onContinue={() => setIsAuthModalOpen(true)}
       />
       <Toaster position="top-center" richColors />
 
@@ -256,4 +258,3 @@ export default function ListingsPageClient() {
     </div>
   );
 }
-

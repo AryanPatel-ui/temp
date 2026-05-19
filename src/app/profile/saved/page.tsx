@@ -19,12 +19,12 @@ export default function SavedInternshipsPage() {
     const loadSaved = async () => {
       try {
         const savedIds = JSON.parse(localStorage.getItem('saved_internships') || '[]');
-        
+
         // Fetch real internships from API
         const allInternships = await fetchInternships();
-        
+
         if (active) {
-          const filtered = allInternships.filter(internship => savedIds.includes(internship.id));
+          const filtered = allInternships.filter((internship) => savedIds.includes(internship.id));
           setSavedInternships(filtered);
           setIsLoaded(true);
         }
@@ -38,7 +38,7 @@ export default function SavedInternshipsPage() {
 
     const handleSavedChange = () => loadSaved();
     window.addEventListener('saved_internships_changed', handleSavedChange);
-    
+
     return () => {
       active = false;
       window.removeEventListener('saved_internships_changed', handleSavedChange);
@@ -57,11 +57,13 @@ export default function SavedInternshipsPage() {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col items-center justify-center p-6 text-center">
         <Bookmark size={48} className="text-gray-300 mb-4" />
-        <h1 className="text-2xl font-black text-gray-900 mb-2">Sign in to view saved internships</h1>
+        <h1 className="text-2xl font-black text-gray-900 mb-2">
+          Sign in to view saved internships
+        </h1>
         <p className="text-gray-500 mb-6 max-w-md">
           You need to be signed in to access your saved opportunities.
         </p>
-        <Link 
+        <Link
           href="/"
           className="px-6 py-3 rounded-xl bg-newton-blue-500 text-white font-bold tracking-wide hover:bg-newton-blue-600 transition-colors"
         >
@@ -75,7 +77,7 @@ export default function SavedInternshipsPage() {
     <div className="min-h-screen bg-gray-50 pb-20">
       <div className="bg-white border-b border-gray-100 mb-8 relative z-10 shadow-sm">
         <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
-          <Link 
+          <Link
             href="/"
             className="inline-flex items-center gap-2 text-gray-400 hover:text-newton-blue-500 transition-colors mb-6 text-[10px] font-black uppercase tracking-[0.2em]"
           >
@@ -91,7 +93,7 @@ export default function SavedInternshipsPage() {
                 Saved Internships
               </h1>
               <p className="text-gray-500 mt-2 text-sm sm:text-base max-w-xl">
-                Review and apply to the opportunities you've bookmarked.
+                {"Review and apply to the opportunities you've bookmarked."}
               </p>
             </div>
           </div>
@@ -101,7 +103,7 @@ export default function SavedInternshipsPage() {
       <div className="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         {savedInternships.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-            {savedInternships.map(internship => (
+            {savedInternships.map((internship) => (
               <InternshipCard key={internship.id} internship={internship} />
             ))}
           </div>
@@ -110,11 +112,14 @@ export default function SavedInternshipsPage() {
             <div className="w-20 h-20 rounded-[24px] bg-gray-50 text-gray-300 flex items-center justify-center mb-6">
               <Bookmark size={32} />
             </div>
-            <h2 className="text-xl sm:text-2xl font-black text-gray-900 mb-3">No saved internships yet</h2>
+            <h2 className="text-xl sm:text-2xl font-black text-gray-900 mb-3">
+              No saved internships yet
+            </h2>
             <p className="text-gray-500 mb-8 max-w-md mx-auto leading-relaxed">
-              When you find an interesting opportunity, click the bookmark icon to save it here for later review.
+              When you find an interesting opportunity, click the bookmark icon to save it here for
+              later review.
             </p>
-            <Link 
+            <Link
               href="/"
               className="px-8 py-4 rounded-2xl bg-newton-blue-500 text-white text-[11px] font-black uppercase tracking-[0.2em] hover:bg-newton-blue-600 transition-all shadow-[0_8px_20px_-6px_rgba(0,102,255,0.4)] hover:-translate-y-0.5 active:translate-y-0"
             >

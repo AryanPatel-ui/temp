@@ -13,7 +13,7 @@ interface InternshipListProps {
 export default function InternshipList({
   internships,
   isLoading,
-  onResetFilters = () => { },
+  onResetFilters = () => {},
 }: InternshipListProps) {
   if (isLoading) {
     return (

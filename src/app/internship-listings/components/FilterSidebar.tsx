@@ -83,9 +83,7 @@ export default function FilterSidebar({
         <div className="flex items-center gap-2">
           <SlidersHorizontal size={16} className="text-primary" />
           <span className="font-semibold text-sm text-foreground">Filters</span>
-          {hasActiveFilters && (
-            <span className="w-2 h-2 rounded-full bg-primary" />
-          )}
+          {hasActiveFilters && <span className="w-2 h-2 rounded-full bg-primary" />}
         </div>
         <div className="flex items-center gap-2">
           {hasActiveFilters && (
@@ -120,9 +118,7 @@ export default function FilterSidebar({
               type="text"
               placeholder="Search roles…"
               value={filters.keyword}
-              onChange={(e) =>
-                onFilterChange({ ...filters, keyword: e.target.value })
-              }
+              onChange={(e) => onFilterChange({ ...filters, keyword: e.target.value })}
               className="w-full pl-9 pr-8 py-2.5 text-sm rounded-xl border border-border/50 bg-muted/30 focus:outline-none focus:ring-4 focus:ring-primary/5 focus:border-primary/30 transition-all placeholder:text-muted-foreground/40"
             />
           </div>
@@ -140,9 +136,7 @@ export default function FilterSidebar({
             <select
               id="location-select"
               value={filters.location}
-              onChange={(e) =>
-                onFilterChange({ ...filters, location: e.target.value })
-              }
+              onChange={(e) => onFilterChange({ ...filters, location: e.target.value })}
               className="w-full appearance-none py-2.5 pl-3 pr-8 text-sm rounded-xl border border-border/50 bg-muted/30 focus:outline-none focus:ring-4 focus:ring-primary/5 focus:border-primary/30 transition-all cursor-pointer"
             >
               {availableLocations.map((loc) => (
@@ -166,10 +160,11 @@ export default function FilterSidebar({
           <div className="flex flex-wrap gap-1.5">
             <button
               onClick={() => onFilterChange({ ...filters, skills: [] })}
-              className={`px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all duration-200 border ${filters.skills.length === 0
-                ? 'bg-primary text-primary-foreground border-primary shadow-sm scale-[0.98]'
-                : 'bg-white text-muted-foreground border-border/50 hover:border-primary/20 hover:text-primary hover:bg-primary/5'
-                }`}
+              className={`px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all duration-200 border ${
+                filters.skills.length === 0
+                  ? 'bg-primary text-primary-foreground border-primary shadow-sm scale-[0.98]'
+                  : 'bg-white text-muted-foreground border-border/50 hover:border-primary/20 hover:text-primary hover:bg-primary/5'
+              }`}
             >
               All
             </button>
@@ -179,10 +174,11 @@ export default function FilterSidebar({
                 <button
                   key={skill}
                   onClick={() => toggleSkill(skill)}
-                  className={`px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all duration-200 border ${isSelected
-                    ? 'bg-primary text-primary-foreground border-primary shadow-sm scale-[0.98]'
-                    : 'bg-white text-muted-foreground border-border/50 hover:border-primary/20 hover:text-primary hover:bg-primary/5'
-                    }`}
+                  className={`px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all duration-200 border ${
+                    isSelected
+                      ? 'bg-primary text-primary-foreground border-primary shadow-sm scale-[0.98]'
+                      : 'bg-white text-muted-foreground border-border/50 hover:border-primary/20 hover:text-primary hover:bg-primary/5'
+                  }`}
                 >
                   {skill}
                 </button>
@@ -199,21 +195,32 @@ export default function FilterSidebar({
           <div className="flex flex-wrap gap-1.5">
             <button
               onClick={() => onFilterChange({ ...filters, titleCategory: '' })}
-              className={`px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all duration-200 border ${filters.titleCategory === ''
-                ? 'bg-primary text-primary-foreground border-primary shadow-sm scale-[0.98]'
-                : 'bg-white text-muted-foreground border-border/50 hover:border-primary/20 hover:text-primary hover:bg-primary/5'
-                }`}
+              className={`px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all duration-200 border ${
+                filters.titleCategory === ''
+                  ? 'bg-primary text-primary-foreground border-primary shadow-sm scale-[0.98]'
+                  : 'bg-white text-muted-foreground border-border/50 hover:border-primary/20 hover:text-primary hover:bg-primary/5'
+              }`}
             >
               All
             </button>
-            {['Development', 'AI', 'Backend', 'Frontend', 'Web', 'Full Stack', 'Software', 'MERN'].map((title) => (
+            {[
+              'Development',
+              'AI',
+              'Backend',
+              'Frontend',
+              'Web',
+              'Full Stack',
+              'Software',
+              'MERN',
+            ].map((title) => (
               <button
                 key={title}
                 onClick={() => onFilterChange({ ...filters, titleCategory: title })}
-                className={`px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all duration-200 border ${filters.titleCategory === title
-                  ? 'bg-primary text-primary-foreground border-primary shadow-sm scale-[0.98]'
-                  : 'bg-white text-muted-foreground border-border/50 hover:border-primary/20 hover:text-primary hover:bg-primary/5'
-                  }`}
+                className={`px-3 py-1.5 rounded-lg text-[11px] font-medium transition-all duration-200 border ${
+                  filters.titleCategory === title
+                    ? 'bg-primary text-primary-foreground border-primary shadow-sm scale-[0.98]'
+                    : 'bg-white text-muted-foreground border-border/50 hover:border-primary/20 hover:text-primary hover:bg-primary/5'
+                }`}
               >
                 {title}
               </button>
@@ -236,10 +243,11 @@ export default function FilterSidebar({
                 <button
                   key={d.value}
                   onClick={() => onFilterChange({ ...filters, duration: d.value })}
-                  className={`px-3 py-2 rounded-xl text-xs font-medium border transition-all duration-200 ${isSelected
-                    ? 'bg-primary/5 text-primary border-primary/30 ring-2 ring-primary/5'
-                    : 'bg-white text-muted-foreground border-border/50 hover:border-primary/20 hover:text-primary'
-                    }`}
+                  className={`px-3 py-2 rounded-xl text-xs font-medium border transition-all duration-200 ${
+                    isSelected
+                      ? 'bg-primary/5 text-primary border-primary/30 ring-2 ring-primary/5'
+                      : 'bg-white text-muted-foreground border-border/50 hover:border-primary/20 hover:text-primary'
+                  }`}
                 >
                   {d.label}
                 </button>
@@ -261,10 +269,7 @@ export default function FilterSidebar({
       {/* Mobile overlay */}
       {isMobileOpen && (
         <div className="lg:hidden fixed inset-0 z-50 flex">
-          <div
-            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
-            onClick={onMobileClose}
-          />
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={onMobileClose} />
           <aside className="relative z-10 w-80 max-w-[90vw] bg-white h-full shadow-xl animate-slide-up">
             {sidebarContent}
           </aside>

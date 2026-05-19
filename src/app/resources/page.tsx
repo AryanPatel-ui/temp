@@ -5,41 +5,40 @@ import Topbar from '@/components/Topbar';
 import { BookOpen, Users, FileText, ArrowRight } from 'lucide-react';
 
 export default function ResourcesPage() {
-
-
-
   const resources = [
     {
       title: 'Modules',
-      description: 'Access comprehensive study materials, coding tutorials, and technical guides designed for core engineering concepts.',
+      description:
+        'Access comprehensive study materials, coding tutorials, and technical guides designed for core engineering concepts.',
       icon: <BookOpen className="w-8 h-8 text-[#0066FF]" />,
       bg: 'bg-blue-50',
       tag: 'Learning Path',
-      href: 'https://pastoral-homburg-015.notion.site/Preparation-DOC-310cab9a2df3804ba3a4c0c15694cafa'
+      href: 'https://pastoral-homburg-015.notion.site/Preparation-DOC-310cab9a2df3804ba3a4c0c15694cafa',
     },
     {
       title: 'Interview Prep',
-      description: 'Practice with past interview questions, mock technical rounds, and behavioral interview strategies for top tech companies.',
+      description:
+        'Practice with past interview questions, mock technical rounds, and behavioral interview strategies for top tech companies.',
       icon: <Users className="w-8 h-8 text-violet-600" />,
       bg: 'bg-violet-50',
       tag: 'Practice',
-      href: 'https://docs.google.com/document/d/1sniw-RgYZN-02O-Ea972528WUN1lAVeK42FPGgAgL0c/edit?usp=sharing'
+      href: 'https://docs.google.com/document/d/1sniw-RgYZN-02O-Ea972528WUN1lAVeK42FPGgAgL0c/edit?usp=sharing',
     },
     {
       title: 'Resume Guidelines',
-      description: 'Step-by-step guides, verified templates, and actionable tips to build an ATS-friendly resume that gets you shortlisted.',
+      description:
+        'Step-by-step guides, verified templates, and actionable tips to build an ATS-friendly resume that gets you shortlisted.',
       icon: <FileText className="w-8 h-8 text-amber-600" />,
       bg: 'bg-amber-50',
       tag: 'Career',
-      href: 'https://docs.google.com/document/d/13rm5MY5jteXYVeAnLfRFljyoYYFllzxP0aqITH1bN2E/edit?usp=drivesdk'
-    }
+      href: 'https://docs.google.com/document/d/13rm5MY5jteXYVeAnLfRFljyoYYFllzxP0aqITH1bN2E/edit?usp=drivesdk',
+    },
   ];
-
 
   return (
     <div className="min-h-screen bg-white">
       <Topbar />
-      
+
       <main className="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-20 transition-all duration-300">
         <div className="max-w-2xl mb-12">
           <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-blue-50 border border-blue-100 text-[#0066FF] text-xs font-semibold mb-6">
@@ -56,18 +55,20 @@ export default function ResourcesPage() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {resources.map((resource, index) => (
-            <article 
+            <article
               key={index}
               className="bg-white rounded-[32px] border border-gray-100 shadow-[0_1px_2px_rgba(17,24,39,0.03)] p-5 sm:p-6 lg:p-8 hover:shadow-[0_0_0_1px_rgba(17,24,39,0.05),0_18px_38px_rgba(0,102,255,0.05)] transition-all duration-200 ease-in-out group flex flex-col h-full relative overflow-hidden"
             >
               {/* Decorative Brand Accent */}
               <div className="absolute top-0 right-0 w-32 h-32 bg-[#0066FF]/5 rounded-bl-full -mr-16 -mt-16 transition-transform duration-500 group-hover:scale-110" />
-              
+
               <div className="relative z-10 flex-1 flex flex-col">
                 <div className="flex items-start justify-between mb-8">
                   <div className="flex items-center gap-5">
                     <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-[18px] sm:rounded-[20px] bg-white flex items-center justify-center border-2 border-gray-50 shadow-sm group-hover:shadow-[0_8px_18px_rgba(0,102,255,0.08)] transition-all duration-300 overflow-hidden">
-                      <div className={`w-full h-full rounded-[16px] sm:rounded-[18px] ${resource.bg} flex items-center justify-center`}>
+                      <div
+                        className={`w-full h-full rounded-[16px] sm:rounded-[18px] ${resource.bg} flex items-center justify-center`}
+                      >
                         {resource.icon}
                       </div>
                     </div>

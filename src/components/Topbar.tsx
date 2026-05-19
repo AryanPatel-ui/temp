@@ -101,10 +101,12 @@ export default function Topbar() {
                   {isUserMenuOpen && (
                     <div className="absolute right-0 top-full mt-2 w-48 bg-white rounded-2xl border border-gray-100 shadow-xl overflow-hidden z-50">
                       <div className="px-4 py-3 border-b border-gray-50">
-                        <p className="text-xs font-semibold text-gray-900 truncate">{displayName}</p>
+                        <p className="text-xs font-semibold text-gray-900 truncate">
+                          {displayName}
+                        </p>
                         <p className="text-[10px] text-gray-400 truncate mt-0.5">{user.email}</p>
                       </div>
-                      <Link 
+                      <Link
                         href="/profile/saved"
                         onClick={() => setIsUserMenuOpen(false)}
                         className="w-full flex items-center gap-2.5 px-4 py-3 text-[11px] font-semibold text-gray-600 hover:bg-gray-50 transition-colors"
@@ -112,7 +114,7 @@ export default function Topbar() {
                         <Bookmark size={13} />
                         Saved
                       </Link>
-                      <Link 
+                      <Link
                         href="/profile/applied"
                         onClick={() => setIsUserMenuOpen(false)}
                         className="w-full flex items-center gap-2.5 px-4 py-3 text-[11px] font-semibold text-gray-600 hover:bg-gray-50 transition-colors"
@@ -209,9 +211,9 @@ export default function Topbar() {
                             <LogOut size={11} /> Sign out
                           </button>
                         </div>
-                        
+
                         <div className="flex flex-col gap-1 border-t border-gray-200/60 pt-2 mt-1">
-                          <Link 
+                          <Link
                             href="/profile/saved"
                             onClick={() => setIsMobileMenuOpen(false)}
                             className="flex items-center gap-2.5 py-2 text-[11px] font-semibold text-gray-600"
@@ -219,7 +221,7 @@ export default function Topbar() {
                             <Bookmark size={13} />
                             Saved
                           </Link>
-                          <Link 
+                          <Link
                             href="/profile/applied"
                             onClick={() => setIsMobileMenuOpen(false)}
                             className="flex items-center gap-2.5 py-2 text-[11px] font-semibold text-gray-600"

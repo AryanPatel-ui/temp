@@ -20,7 +20,9 @@ export default function InternshipListingsPage() {
 
             {/* Subheading */}
             <p className="text-[#6B7280] text-base sm:text-lg lg:text-xl font-medium max-w-2xl leading-relaxed">
-              Skip the noise. We've curated high-growth internships with verified application links,
+              {
+                "Skip the noise. We've curated high-growth internships with verified application links,"
+              }
               <br className="hidden md:block" />
               clear deadlines, and daily updates.
             </p>

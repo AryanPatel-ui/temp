@@ -10,7 +10,7 @@ export default function ExperiencesPage() {
   return (
     <div className="min-h-screen bg-white flex flex-col">
       <Topbar />
-      
+
       <main className="flex-1 flex items-center justify-center max-w-7xl mx-auto px-6 md:px-8 py-20 w-full relative overflow-hidden">
         {/* Elegant ambient glow behind */}
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center z-0">
@@ -41,9 +41,10 @@ export default function ExperiencesPage() {
           <h1 className="text-[2.5rem] sm:text-[3.5rem] font-black text-[#1A1D23] tracking-tight leading-[1.1]">
             Experiences
           </h1>
-          
+
           <p className="mt-6 text-[1rem] sm:text-[1.125rem] text-[#6B7280] font-medium leading-[1.7] max-w-md">
-            Read authentic, verified interview experiences and preparation journeys shared by Newton School seniors and alumni.
+            Read authentic, verified interview experiences and preparation journeys shared by Newton
+            School seniors and alumni.
           </p>
 
           <div className="mt-10 flex flex-col sm:flex-row items-center gap-4">

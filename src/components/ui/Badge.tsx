@@ -1,7 +1,23 @@
 import React from 'react';
 
 type BadgeVariant =
-  | 'tech' |'finance' |'design' |'marketing' |'operations' |'data' |'legal' |'hr' |'work-from-home' |'full-time' |'part-time' |'hybrid' |'new' |'urgent' |'closed' |'open' |'default';
+  | 'tech'
+  | 'finance'
+  | 'design'
+  | 'marketing'
+  | 'operations'
+  | 'data'
+  | 'legal'
+  | 'hr'
+  | 'work-from-home'
+  | 'full-time'
+  | 'part-time'
+  | 'hybrid'
+  | 'new'
+  | 'urgent'
+  | 'closed'
+  | 'open'
+  | 'default';
 
 interface BadgeProps {
   variant?: BadgeVariant;
@@ -37,7 +53,7 @@ export default function Badge({
   size = 'sm',
 }: BadgeProps) {
   const sizeStyles =
-    size === 'sm' ?'px-2 py-0.5 text-[11px] font-semibold' :'px-2.5 py-1 text-xs font-semibold';
+    size === 'sm' ? 'px-2 py-0.5 text-[11px] font-semibold' : 'px-2.5 py-1 text-xs font-semibold';
 
   return (
     <span
