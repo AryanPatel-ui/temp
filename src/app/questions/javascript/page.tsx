@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import Topbar from '@/components/Topbar';
-import { ArrowLeft, BookOpen, ExternalLink, Code2 } from 'lucide-react';
+import { ArrowLeft, BookOpen, ExternalLink, Code2, GitBranch } from 'lucide-react';
 
 export default function JavascriptQuestionsPage() {
   const resources = [
@@ -21,6 +21,62 @@ export default function JavascriptQuestionsPage() {
       icon: BookOpen,
       color: "text-emerald-500",
       bgColor: "bg-emerald-50",
+    },
+    {
+      title: "github #1",
+      description: "Explore practical JavaScript coding challenges, interview preparation guides, and algorithms in this GitHub repository.",
+      url: "http://github.com/ssagar1999/javascript-problem-solving",
+      icon: GitBranch,
+      color: "text-gray-900",
+      bgColor: "bg-gray-100",
+    },
+    {
+      title: "github #2",
+      description: "Explore practical JavaScript coding challenges, interview preparation guides, and algorithms in this GitHub repository.",
+      url: "https://github.com/ssagar1999/super-Assignment-lite-problems",
+      icon: GitBranch,
+      color: "text-gray-900",
+      bgColor: "bg-gray-100",
+    },
+    {
+      title: "github #3",
+      description: "Explore practical JavaScript coding challenges, interview preparation guides, and algorithms in this GitHub repository.",
+      url: "https://github.com/ssagar1999/javascript-dsa",
+      icon: GitBranch,
+      color: "text-gray-900",
+      bgColor: "bg-gray-100",
+    },
+    {
+      title: "github #4",
+      description: "Explore practical JavaScript coding challenges, interview preparation guides, and algorithms in this GitHub repository.",
+      url: "https://github.com/ssagar1999/ASSIGNMENT-Shaping-Data-with-Array-Methods",
+      icon: GitBranch,
+      color: "text-gray-900",
+      bgColor: "bg-gray-100",
+    },
+    {
+      title: "github #5",
+      description: "Explore practical JavaScript coding challenges, interview preparation guides, and algorithms in this GitHub repository.",
+      url: "https://github.com/ssagar1999/string-methods",
+      icon: GitBranch,
+      color: "text-gray-900",
+      bgColor: "bg-gray-100",
+    },
+    {
+      title: "github #6",
+      description: "Explore practical JavaScript coding challenges, interview preparation guides, and algorithms in this GitHub repository.",
+      url: "https://github.com/ssagar1999/Problem-Solving-with-JS-main",
+      icon: GitBranch,
+      color: "text-gray-900",
+      bgColor: "bg-gray-100",
+    },
+    {
+      title: "github #7",
+      description: "Explore practical JavaScript coding challenges, interview preparation guides, and algorithms in this GitHub repository.",
+      url: "https://github.com/ssagar1999/object-exercises",
+      icon: GitBranch,
+      color: "text-gray-900",
+      bgColor: "bg-gray-100",
     }
   ];
 
@@ -28,7 +84,7 @@ export default function JavascriptQuestionsPage() {
     <div className="min-h-screen bg-white flex flex-col">
       <Topbar />
 
-      <main className="flex-1 max-w-5xl mx-auto px-6 md:px-8 py-12 md:py-16 w-full relative">
+      <main className="flex-1 max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-16 w-full relative">
         {/* Elegant ambient glow behind */}
         <div className="absolute pointer-events-none inset-0 flex items-center justify-center z-0 overflow-hidden">
           <div className="w-[600px] h-[600px] rounded-full bg-newton-yellow-500/5 blur-[80px] animate-pulse" />
@@ -57,7 +113,7 @@ export default function JavascriptQuestionsPage() {
             Master closures, promises, the event loop, and modern ES6+ features with these curated practice materials.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {resources.map((resource, index) => {
               const Icon = resource.icon;
               return (
@@ -87,7 +143,7 @@ export default function JavascriptQuestionsPage() {
 
       {/* Footer */}
       <footer className="bg-white border-t border-gray-100 mt-20">
-        <div className="max-w-5xl mx-auto px-6 md:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 py-10 flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-3">
             <Image
               src="/assets/images/logo.png"
